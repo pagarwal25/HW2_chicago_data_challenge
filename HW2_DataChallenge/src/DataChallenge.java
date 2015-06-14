@@ -1,53 +1,52 @@
+package com.chicago.reader;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.math3.stat.correlation.PearsonsCorrelation;
+
 
 
 public class DataChallenge {
-
-	public static void main(String[] args) throws IOException {
-		
+	public static List<SocioEconIndicatorData> readSocioEconomicData() throws IOException {
 		List<SocioEconIndicatorData> socioEconomicData = new ArrayList<>();
-
-		BufferedReader bufreader1 = new BufferedReader(new FileReader("Socioeconomic data.csv"));
-
-		String headings1 = bufreader1.readLine();
-		String line1 = null;
-		while ((line1 = bufreader1.readLine()) != null) {
-			String str[] = line1.split(",");
-						
+		BufferedReader bufreader = new BufferedReader(new FileReader("Socioeconomic data.csv"));
+		String headings = bufreader.readLine();
+		String line = null;
+		while ((line = bufreader.readLine()) != null) {
+			String str[] = line.split(",");
 			String areaNumber = str[0];
 			if (areaNumber != null && !areaNumber.isEmpty()	&& !areaNumber.equals("0")) {
-				System.out.println(line1);
+				System.out.println(line);
 				String areaName = str[1];
 				Double percentBelowPoverty = Double.parseDouble(str[3]);
 				Double percentWithoutDiploma = Double.parseDouble(str[5]);
 				SocioEconIndicatorData seiData = new SocioEconIndicatorData();
-				seiData.setAreaNumber(Integer.parseInt(areaNumber));
 				seiData.setAdultsWithoutDiploma(percentWithoutDiploma);
 				seiData.setAreaName(areaName);
+				seiData.setAreaNumber(Integer.parseInt(areaNumber));
 				seiData.setHouseholdsBelowPoverty(percentBelowPoverty);
 				socioEconomicData.add(seiData);
 			}
-
-			
 		}
-		
-		List<TeenBirthData> teenBirthDataList = new ArrayList<>();
-		BufferedReader bufreader2 = new BufferedReader(new FileReader("Birth data.csv"));
+		return socioEconomicData;
+	}
 
-		String headings2 = bufreader2.readLine();
-		String line2 = null;
-		while ((line2 = bufreader2.readLine()) != null) {
-			String str[] = line2.split(",");
-			
-			
-			
+	public static List<TeenBirthData> readBirthRateData() throws IOException {
+		List<TeenBirthData> teenBirthDataList = new ArrayList<>();
+		BufferedReader bufreader = new BufferedReader(new FileReader("Birth data.csv"));
+		String headings = bufreader.readLine();
+		String line = null;
+		while ((line = bufreader.readLine()) != null) {
+			String str[] = line.split(",");
 			String areaNumber = str[0];
 			if (areaNumber != null && !areaNumber.isEmpty()	&& !areaNumber.equals("0")) {
-				System.out.println(line2);
+				System.out.println(line);
 				TeenBirthData tbData = new TeenBirthData();
 				String areaName = str[1];
 				if (str[3] != null && !str[3].isEmpty()) {
@@ -67,12 +66,50 @@ public class DataChallenge {
 					tbData.getYearBirthRateMap().put(2002, br02);
 				}
 				tbData.setAreaName(areaName);
+				tbData.setAreaNumber(Integer.parseInt(areaNumber));
 				teenBirthDataList.add(tbData);
 			}
-
-			
 		}
-		
+		return teenBirthDataList;
 	}
 
+	public static Map<Integer, Data> createAreaDataMapping(List<SocioEconIndicatorData> socioEconomicDataList,
+			List<TeenBirthData> teenBirthDataList) {
+		Map<Integer, Data> areaDataMapping = new HashMap<Integer, Data>();
+		for (SocioEconIndicatorData socioEconomicData : socioEconomicDataList) {
+			Integer areaNumber = socioEconomicData.getAreaNumber();
+			for (TeenBirthData teenBirthData : teenBirthDataList) {
+				if (areaNumber.equals(teenBirthData.getAreaNumber())) {
+					Data data = new Data();
+					data.setSocioEconIndicatorData(socioEconomicData);
+					data.setTeenBirthData(teenBirthData);
+					areaDataMapping.put(areaNumber, data);
+					break;
+				}
+			}
+		}
+		return areaDataMapping;
+	}
+	
+	public static void main(String[] args) throws IOException {
+		List<SocioEconIndicatorData> socioEconomicData = readSocioEconomicData();
+		List<TeenBirthData> teenBirthData = readBirthRateData();
+		Map<Integer, Data> areaDataMapping =createAreaDataMapping(socioEconomicData,teenBirthData);
+		double[] belowPovertyPer = new double[areaDataMapping.size()];
+		double[] withoutDiplomaPer = new double[areaDataMapping.size()];
+		double[] birthRatePer = new double[areaDataMapping.size()];
+		int count = 0;
+		for (Data areaData : areaDataMapping.values()) {
+			belowPovertyPer[count] = areaData.getSocioEconIndicatorData().getHouseholdsBelowPoverty();
+			birthRatePer[count] = areaData.getTeenBirthData().getAverageBirthRate();
+			withoutDiplomaPer[count] = areaData.getSocioEconIndicatorData().getAdultsWithoutDiploma();
+			count++;
+		}
+		PearsonsCorrelation pearsonsCorrelation  = new PearsonsCorrelation();
+		double povertyBirthCorrelation = pearsonsCorrelation.correlation(belowPovertyPer, birthRatePer);
+		System.out.print(String.valueOf(povertyBirthCorrelation));
+		PearsonsCorrelation newPearsonsCorrelation  = new PearsonsCorrelation();
+		double educationBirthCorrelation = pearsonsCorrelation.correlation(withoutDiplomaPer, birthRatePer);
+		System.out.print(String.valueOf(educationBirthCorrelation));
+}
 }
