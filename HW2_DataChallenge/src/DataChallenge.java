@@ -1,4 +1,5 @@
-package com.chicago.reader;
+
+
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -7,6 +8,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+
 
 import org.apache.commons.math3.stat.correlation.PearsonsCorrelation;
 
