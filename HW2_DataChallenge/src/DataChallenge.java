@@ -1,6 +1,3 @@
-
-
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -8,8 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-
 
 import org.apache.commons.math3.stat.correlation.PearsonsCorrelation;
 
@@ -110,9 +105,11 @@ public class DataChallenge {
 		}
 		PearsonsCorrelation pearsonsCorrelation  = new PearsonsCorrelation();
 		double povertyBirthCorrelation = pearsonsCorrelation.correlation(belowPovertyPer, birthRatePer);
-		System.out.print(String.valueOf(povertyBirthCorrelation));
+		System.out.println("Correlation in Poverty and Birth Rate");
+		System.out.println(String.valueOf(povertyBirthCorrelation));
 		PearsonsCorrelation newPearsonsCorrelation  = new PearsonsCorrelation();
 		double educationBirthCorrelation = pearsonsCorrelation.correlation(withoutDiplomaPer, birthRatePer);
-		System.out.print(String.valueOf(educationBirthCorrelation));
+		System.out.println("Correlation in education and Birth Rate");
+		System.out.println(String.valueOf(educationBirthCorrelation));
 }
 }
