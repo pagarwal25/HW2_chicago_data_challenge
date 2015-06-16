@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
 
 import org.apache.commons.math3.stat.correlation.PearsonsCorrelation;
@@ -112,8 +113,12 @@ public class DataChallenge {
 		{
 			
 			
-			System.out.format("%10d%25s%50s%25s%n",teenBirthDataList.get(i).getAreaNumber(),teenBirthDataList.get(i).getAreaName(),teenBirthDataList.get(i).getYearBirthRateMap(),teenBirthDataList.get(i).getAverageBirthRate());
-			
+			System.out.format("%10d%25s",teenBirthDataList.get(i).getAreaNumber(),teenBirthDataList.get(i).getAreaName());
+			String yearBirthrateString = "";
+			for (Entry<Integer, Double> value : teenBirthDataList.get(i).getYearBirthRateMap().entrySet()) {
+				yearBirthrateString+=value.getKey()+":"+value.getValue()+"; ";
+			}
+			System.out.format("%50s%25.2f%n",yearBirthrateString,teenBirthDataList.get(i).getAverageBirthRate());
 		}
 	}
 	
