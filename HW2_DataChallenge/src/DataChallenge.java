@@ -16,14 +16,9 @@ public class DataChallenge {
 	//method to read data from Socioeconomic data set
 	public static List<SocioEconIndicatorData> readSocioEconomicData() throws IOException {
 		List<SocioEconIndicatorData> socioEconomicData = new ArrayList<>();
-		BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
-	    System.out.println("Please enter the csv file for Socioeconomic data");
-		String s = bufferRead.readLine();
-		if(s == null || s.isEmpty()){
-			s= "Socioeconomic data.csv";
-		}
-	
-		BufferedReader bufreader = new BufferedReader(new FileReader(s));
+		   
+		
+		BufferedReader bufreader = new BufferedReader(new FileReader("Socioeconomic data.csv"));
 		String headings = bufreader.readLine();
 		String line = null;
 		while ((line = bufreader.readLine()) != null) {
@@ -52,12 +47,14 @@ public class DataChallenge {
 	//method to display selected columns from socioeconomic dataset
 	public static void dispScioEconomicData(List<SocioEconIndicatorData> socioEconomicData){
 	
-		System.out.println("Area Number,Area Name, Adult Without Diploma, Household Below Poverty");
+		System.out.println("---------------------------------------------------------------------------------------");
+		System.out.format("%10s%25s%25s%25s%n","Area Number","Area Name", "Adult Without Diploma", "Household Below Poverty");
+		System.out.println("---------------------------------------------------------------------------------------");
 		for(int i=0;i<socioEconomicData.size();i++)
 		{
 			
 			
-			System.out.println(socioEconomicData.get(i).getAreaNumber()+","+socioEconomicData.get(i).getAreaName()+","+socioEconomicData.get(i).getAdultsWithoutDiploma()+","+socioEconomicData.get(i).getHouseholdsBelowPoverty());
+		 System.out.format("%10d%25s%25s%25s%n",socioEconomicData.get(i).getAreaNumber(),socioEconomicData.get(i).getAreaName(),socioEconomicData.get(i).getAdultsWithoutDiploma(),socioEconomicData.get(i).getHouseholdsBelowPoverty());
 			
 		}
 	}
@@ -68,13 +65,7 @@ public class DataChallenge {
 	//method to read data from TeenBirth data set
 	public static List<TeenBirthData> readBirthRateData() throws IOException {
 		List<TeenBirthData> teenBirthDataList = new ArrayList<>();
-		BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
-	    System.out.println("Please enter the csv file for Teen Birth data");
-		String s = bufferRead.readLine();
-		if(s == null || s.isEmpty()){
-			s= "Birth data.csv";
-		}
-		BufferedReader bufreader = new BufferedReader(new FileReader(s));
+		BufferedReader bufreader = new BufferedReader(new FileReader("Birth data.csv"));
 		String headings = bufreader.readLine();
 		String line = null;
 		while ((line = bufreader.readLine()) != null) {
@@ -113,12 +104,14 @@ public class DataChallenge {
 	public static void dispBirthRate(List<TeenBirthData> teenBirthDataList){
 		
 		System.out.println("");
-		System.out.println("Area Number,Area Name, Year:BirthRate, AverageBirthRate");
+		System.out.println("----------------------------------------------------------------------------------------------------------------");
+		System.out.format("%10s%25s%50s%25s%n","Area Number","Area Name", "Year:BirthRate", "AverageBirthRate");
+		System.out.println("----------------------------------------------------------------------------------------------------------------");
 		for(int i=0;i<teenBirthDataList.size();i++)
 		{
 			
 			
-			System.out.println(teenBirthDataList.get(i).getAreaNumber()+","+teenBirthDataList.get(i).getAreaName()+","+teenBirthDataList.get(i).getYearBirthRateMap()+","+teenBirthDataList.get(i).getAverageBirthRate());
+			System.out.format("%10d%25s%50s%25s%n",teenBirthDataList.get(i).getAreaNumber(),teenBirthDataList.get(i).getAreaName(),teenBirthDataList.get(i).getYearBirthRateMap(),teenBirthDataList.get(i).getAverageBirthRate());
 			
 		}
 	}
