@@ -1,10 +1,11 @@
 HW2_chicago_data_challenge version 1.0 06/17/2015
-
 =========================================================================================
 
-IMPORTANT: READ THIS FILE THOTHOUGHLY BEFORE USING THIS PROGRAM.
-	   YOU MUST ENSURE THAT ALL OF THE FOLLOWING INFOMATION GIVEN 
-           HERE HAVE BEEN CAREFULLY SCANNED.
+IMPORTANT:
+=========================================================================================
+READ THIS FILE THOTHOUGHLY BEFORE USING THIS PROGRAM.
+YOU MUST ENSURE THAT ALL OF THE FOLLOWING INFOMATION GIVEN 
+HERE HAVE BEEN CAREFULLY SCANNED.
 
 This is a free program; you can redistribute it and/or modify it under the term of
 General Public License as published by Free Software Foundation.
@@ -19,6 +20,7 @@ Depending upon the datasets provided at the City of Chicago Portal, this project
 the two main data sets i.e.
 
 1.Public Health Statistics - Birth to mothers aged 15-19 years old in chicago
+
 2.Socioeconomic indicator in chicago
 
 The main purpose of this program is to determine how the two main factors that are household below
@@ -51,7 +53,7 @@ Include test methods to check the null value or empty reults using junit-4.12.ja
 uses pearson correlation to find the correlation coefficient using library commons-math3-3.5.jar
 
 Program can be reached at:
-
+=========================================================================================
 Web Site: https://github.com/pagarwal25
 Email: pagarwal@luc.edu
 
