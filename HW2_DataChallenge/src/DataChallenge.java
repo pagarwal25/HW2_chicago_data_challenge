@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 import org.apache.commons.math3.stat.correlation.PearsonsCorrelation;
 
@@ -136,8 +137,12 @@ public class DataChallenge {
 	}
 	
 	public static void main(String[] args) throws IOException {
+		
+		
 		List<SocioEconIndicatorData> socioEconomicData = readSocioEconomicData();
+				
 		List<TeenBirthData> teenBirthData = readBirthRateData();
+		
 		Map<Integer, Data> areaDataMapping =createAreaDataMapping(socioEconomicData,teenBirthData);
 		double[] belowPovertyPer = new double[areaDataMapping.size()];
 		double[] withoutDiplomaPer = new double[areaDataMapping.size()];
@@ -150,13 +155,13 @@ public class DataChallenge {
 			count++;
 		}
 		
-		//using pearsons Correlation
+		//using PearsonsCorrelation
 		PearsonsCorrelation pearsonsCorrelation  = new PearsonsCorrelation();
 		double povertyBirthCorrelation = pearsonsCorrelation.correlation(belowPovertyPer, birthRatePer);
 		System.out.println("");
 		System.out.println("Correlation coefficient in Poverty and Birth Rate");
 		System.out.println(String.valueOf(povertyBirthCorrelation));
-		PearsonsCorrelation newPearsonsCorrelation  = new PearsonsCorrelation();
+		
 		double educationBirthCorrelation = pearsonsCorrelation.correlation(withoutDiplomaPer, birthRatePer);
 		System.out.println("");
 		System.out.println("Correlation coefficient in education and Birth Rate");
