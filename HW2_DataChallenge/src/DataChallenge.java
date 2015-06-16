@@ -40,7 +40,7 @@ public class DataChallenge {
 			
 		}
 		
-		dispScioEconomicData(socioEconomicData);	
+			
 		return socioEconomicData;
 				
 	}
@@ -97,7 +97,7 @@ public class DataChallenge {
 			}
 		}
 		
-		dispBirthRate(teenBirthDataList);
+		
 		return teenBirthDataList;
 	}
 
@@ -138,12 +138,52 @@ public class DataChallenge {
 	
 	public static void main(String[] args) throws IOException {
 		
+		System.out.println("*************Program to analyse the how Adults without education and household below poverty**************");
+		System.out.println("*************\t\t\tcontributes to the teen Birth area wise\t\t\t    **************");
+		System.out.println("");
+		System.out.println("");
 		
-		List<SocioEconIndicatorData> socioEconomicData = readSocioEconomicData();
+		
+		List<TeenBirthData> teenBirthDataList = readBirthRateData();
+		List<SocioEconIndicatorData> socioEconomicDataList = readSocioEconomicData();
+		
+		BufferedReader bufread = new BufferedReader(new InputStreamReader(System.in));
+		String s = null;
+		do{
+			System.out.println("");
+			System.out.println("Press1 - To View Teen Bith data");
+			System.out.println("Press2 - To View SocioEconomic Indicator data");
+			System.out.println("Press Any other key to check the Correlation coefficient directly");
+			 s = bufread.readLine();
+			 switch(s){
+				case "1":{
+					dispBirthRate(teenBirthDataList);
+					
+									 
+							
+						break;
+												
+				}
 				
-		List<TeenBirthData> teenBirthData = readBirthRateData();
+				case "2": {
+					dispScioEconomicData(socioEconomicDataList);
+					break;
+				}
+				
+				
+				
+				default:{
+					System.out.println("Skipping to correlation Coefficient Calculation");
+					break;
+				}
+				
+								
+				}
+		}while("2".equals(s) || "1".equals(s));
 		
-		Map<Integer, Data> areaDataMapping =createAreaDataMapping(socioEconomicData,teenBirthData);
+		
+				
+		Map<Integer, Data> areaDataMapping =createAreaDataMapping(socioEconomicDataList,teenBirthDataList);
 		double[] belowPovertyPer = new double[areaDataMapping.size()];
 		double[] withoutDiplomaPer = new double[areaDataMapping.size()];
 		double[] birthRatePer = new double[areaDataMapping.size()];
@@ -154,6 +194,9 @@ public class DataChallenge {
 			withoutDiplomaPer[count] = areaData.getSocioEconIndicatorData().getAdultsWithoutDiploma();
 			count++;
 		}
+		
+		System.out.println("");
+		System.out.println("possible correlation values: \nHigh correlation: .5 to 1.0 or -0.5 to 1.0 \nMedium correlation: .3 to .5 or -0.3 to .5 \nLow correlation: .1 to .3 or -0.1 to -0.3");
 		
 		//using PearsonsCorrelation
 		PearsonsCorrelation pearsonsCorrelation  = new PearsonsCorrelation();
@@ -168,7 +211,7 @@ public class DataChallenge {
 		System.out.println(String.valueOf(educationBirthCorrelation));
 		System.out.println("");
 		
-		System.out.println("possible correlation values: \nHigh correlation: .5 to 1.0 or -0.5 to 1.0 \nMedium correlation: .3 to .5 or -0.3 to .5 \nLow correlation: .1 to .3 or -0.1 to -0.3");
+		
 		
 }
 }
