@@ -2,7 +2,7 @@
 =========================================================================================
 
 #####IMPORTANT:
-=========================================================================================
+
 READ THIS FILE THOROUGHLY BEFORE USING THIS PROGRAM.
 YOU MUST ENSURE THAT ALL OF THE FOLLOWING INFOMATION GIVEN 
 HERE HAVE BEEN CAREFULLY SCANNED.
@@ -15,7 +15,7 @@ of teen birth due to the two main factors that are household below poverty line 
 without diploma. 
 
 #####Usage Note:
-=======================================================================================
+
 Depending upon the datasets provided at the City of Chicago Portal, this project deals with
 the two main data sets i.e.
 
@@ -27,12 +27,12 @@ The main purpose of this program is to determine how the two main factors that a
 poverty line and adults without diploma contributes to birth to mothers aged 15-19 is effected.
 
 #####Motivation:
-=========================================================================================
+
 This program is distributed in the hope that it will be useful, to determine the reasons for teen birth.
 
 
 #####Installation:
-=========================================================================================
+
 ***** Note: This product includes the following libraries
       junit-4.12.jar		http://search.maven.org/remotecontent?filepath=junit/junit/4.12/junit-4.12.jar
       hamcrest-core-1.3.jar     http://search.maven.org/remotecontent?filepath=org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
@@ -48,18 +48,18 @@ Applications used are freely available as an Open Source.
 
 
 #####Documentation:
-=========================================================================================
+
 Java document available in doc folder
 open index.html for java docs
 
 #####Test:
-=========================================================================================
+
 Include test methods to check the null value or empty reults using junit-4.12.jar and hamcrest-core-1.3.jar library.
 
 Uses pearson correlation to find the correlation coefficient using library commons-math3-3.5.jar
 
 #####Programmer can be reached at:
-=========================================================================================
+
 Web Site: https://github.com/pagarwal25
 
 Email: pagarwal@luc.edu
