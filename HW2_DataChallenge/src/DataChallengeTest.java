@@ -3,13 +3,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.junit.Assert;
 import org.junit.Test;
 
 
+/**
+ * 
+ * @author Pallavi
+ * @version 1.0
+ */
 public class DataChallengeTest {
 
+	/**
+	 * 
+	 */
 	@Test
 	public void testReadSocioEconomicData()
 	{
@@ -26,6 +33,9 @@ public class DataChallengeTest {
 	
 	}
 	
+	/**
+	 * 
+	 */
 	@Test
 	public void testReadBirthRateData()
 	{
@@ -42,6 +52,9 @@ public class DataChallengeTest {
 	
 	}
 	
+	/**
+	 * 
+	 */
 	@Test
 	public void testCreateAreaDataMapping()
 	{
