@@ -34,9 +34,9 @@ This program is distributed in the hope that it will be useful, to determine the
 #####Installation:
 
 ***** Note: This product includes the following libraries
-      junit-4.12.jar		http://search.maven.org/remotecontent?filepath=junit/junit/4.12/junit-4.12.jar
-      hamcrest-core-1.3.jar     http://search.maven.org/remotecontent?filepath=org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
-      commons-math3-3.5.jar     http://apache.mirrors.ionfish.org//commons/math/binaries/commons-math3-3.5-bin.zip
+      junit-4.12.jar		http://search.maven.org/remotecontent?filepath=junit/junit/4.12/junit-4.12.jar    
+      hamcrest-core-1.3.jar     http://search.maven.org/remotecontent?filepath=org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar   
+      commons-math3-3.5.jar     http://apache.mirrors.ionfish.org//commons/math/binaries/commons-math3-3.5-bin.zip    
 
 
 To use this project you need to create a clone of the repository Hw2_chicago_data_challenge on your 
