@@ -28,7 +28,7 @@ poverty line and adults without diploma contributes to birth to mothers aged 15-
 
 Motivation:
 =========================================================================================
-This program is distributed in the hope that it will be useful, to determine the reasons fir teen birth.
+This program is distributed in the hope that it will be useful, to determine the reasons for teen birth.
 
 
 Installation:
@@ -46,6 +46,12 @@ teen birth.
 This program is built while keeping in mind the copyrights notices.
 Applications used are freely available as an Open Source.
 Ecllipse version 4.4.0
+
+
+Documentation:
+=========================================================================================
+Java document available in doc folder
+open index.html for java docs
 
 Test:
 =========================================================================================
