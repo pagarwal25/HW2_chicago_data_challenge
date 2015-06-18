@@ -16,7 +16,7 @@ public class TeenBirthData {
 	private int areaNumber;
 	
 	/**
-	 * Variable for Area Nam
+	 * Variable for Area Name
 	 */
 	private String areaName;
 	
