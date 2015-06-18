@@ -57,9 +57,17 @@ open index.html for java docs
 
 #####Test:
 
-Include test methods to check the null value or empty reults using junit-4.12.jar and hamcrest-core-1.3.jar library.
+Include test methods to check the null value or empty results from the readScocioEconIndicator and readTeenBirth Data.   
 
-Uses pearson correlation to find the correlation coefficient using library commons-math3-3.5.jar
+1. testReadSocioEconomicData - to test readScocioEconIndicator method
+
+2. testReadBirthRateData - to test readTeenBirth method
+
+3. testCreateAreaDataMapping - to test check for null and empty values corresponding to an area number   
+	                       and also for one to one mapping. This method is checking the mapping for area number 1
+
+This program is using junit-4.12.jar and hamcrest-core-1.3.jar library.
+
 
 #####Programmer can be reached at:
 
